@@ -1,0 +1,72 @@
+#include <iostream>
+
+class Node
+{
+  public:
+    int data;
+    Node *next;
+
+};
+
+int main() {
+  std::cout << "Hello World!\n";
+
+
+  /**
+   instantiating three pointers to Node objects
+   */
+  Node *head = new Node();
+  Node *second = new Node();
+  Node *third = new  Node();
+
+
+  /**
+   setting the head Node's pointer to the address
+   of the following Node object in our chain,
+   establishing the first and most important link
+   in our chain.
+   */
+  head->data = 10;
+  head->next = second;
+
+  std::cout << "Pointing to address of second object -> " 
+  << head->next << std::endl;
+
+  second->data = 20;
+  second->next = third;
+
+  std::cout << "Pointing to address of third object -> " 
+  << second->next << std::endl;
+
+
+  /**
+   set third's Node pointer to nullptr
+   because third is the final node in our
+   chain and linked list are null-terminated
+   which means that the end is signified by
+   a nullptr
+   */
+  third->data = 30;
+  third->next = nullptr;
+
+
+  std::cout << "Pointing to address of final object -> " 
+  << third->next << std::endl;
+
+  /**
+   eliminating the second Node object of
+   our chain by next the head's Node pointer
+   to the third pointer which is our last Node.
+   Deleting the data of the second object and 
+   setting the Node pointer to nullptr to 
+   handle garbage collection.
+   */
+  head->next = third;
+  delete second;
+  second = nullptr;
+  std::cout << second << std::endl;
+  
+
+  return 0;
+  
+}
