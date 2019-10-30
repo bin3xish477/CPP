@@ -1,0 +1,45 @@
+#include <iostream>
+
+
+int getIndexOfSmallestInt(int* the_array, int index, size_t size) {
+  int minimum = index;
+  for (int i = index+1; i < size; ++i) {
+    if (the_array[i] < the_array[minimum])
+      minimum = i;
+  }
+  return minimum;
+}
+
+
+int* selectionSortAlgorithm(int* arr, size_t size) {
+  for (int first = 0; first < size-1; ++first) {
+
+    int index = getIndexOfSmallestInt(arr, first, size);
+
+    std::swap(arr[index], arr[first]);
+  }
+  return arr;
+}
+
+
+void printArray(int *arr, size_t size) {
+  for (int i = 0; i < size; ++i) {
+    std::cout << arr[i] << std::endl;
+  }
+}
+
+
+int main() {
+  std::cout << "Hello World!\n";
+  int size = 8;
+  int arr_ay[] = {1,3,5,4,7,6,8,2};
+  
+  int* numbers = new int[size];
+  numbers = arr_ay;
+
+  int* sorted = new int[size];
+  sorted = selectionSortAlgorithm(numbers, size);
+
+  printArray(sorted,size);
+  return 0;
+}
